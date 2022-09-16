@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Toggle from './Toggle';
+// import Portal from './Portal';
+import Modal from './Modal';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    console.log('App');
+    return (
+        <>
+            <Toggle>
+                {({ visible, onToggle }) => (
+                    <>
+                        <Modal visible={visible} onToggle={onToggle}>
+                            <h1>111111111111</h1>
+                        </Modal>
+                        <button onClick={onToggle}>Open</button>
+                    </>
+                )}
+            </Toggle>
+        </>
+    );
+};
 
 export default App;
