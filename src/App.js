@@ -1,9 +1,7 @@
-import Toggle from './Toggle';
-// import Portal from './Portal';
-import Modal from './Modal';
+import { Toggle } from 'Utilities';
+import { Modal } from 'Elements';
 
 const App = () => {
-    console.log('App');
     return (
         <>
             <Toggle>
