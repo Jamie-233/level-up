@@ -1,6 +1,6 @@
 import { animated, useSpring, transitions, useTransition } from '@react-spring/web';
-import Toggle from './Toggle';
-// import Modal from './Modal';
+import { Toggle } from 'Utilities';
+import { Modal } from 'Elements';
 // import User from './User';
 import UserProvider from './UserProvider';
 
@@ -43,6 +43,8 @@ const FadeIn = ({ visible, children }) => {
 const App = () => {
 
 
+
+const App = () => {
     return (
         <UserProvider>
             {/* <User /> */}

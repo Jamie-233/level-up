@@ -1,43 +1,41 @@
 import styled from 'styled-components';
-import Portal from './Portal';
+import { Portal, absolute } from 'Utilities';
+import { Card } from './Cards';
+import Icon from './Icon';
 
 const ModalWarper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
+    ${absolute({})};
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 `;
 
-const ModalCard = styled.div`
+const ModalCard = styled(Card)`
     position: relative;
-    background: white;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    min-width: 320px;
     z-index: 10;
+    margin-bottom: 100px;
 `;
 
 const CloseButton = styled.button`
-    position: absolute;
-    top: 0;
-    right: 0;
+    ${absolute({ x: 'right', y: 'top' })};
+    border: none;
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
 `;
 
 const Background = styled.div`
-    position: absolute;
+    ${absolute({})};
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
     background: black;
-    opacity: .3;
+    opacity: 0.5;
 `;
 
-const Modal = (props) => {
+const Modal = props => {
     const { visible, onToggle, children } = props;
 
     return (
@@ -45,10 +43,12 @@ const Modal = (props) => {
             {visible ? (
                 <ModalWarper>
                     <ModalCard>
-                        <CloseButton onClick={onToggle}>Close</CloseButton>
+                        <CloseButton onClick={onToggle}>
+                            <Icon name="close" color="grey" />
+                        </CloseButton>
                         <div>{children}</div>
                     </ModalCard>
-                    <Background />
+                    <Background onClick={onToggle} />
                 </ModalWarper>
             ) : null}
         </Portal>
